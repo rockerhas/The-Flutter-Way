@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_flutter_way/screens/counter_screen.dart';
+import 'package:the_flutter_way/screens/tip_calculator_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,6 +16,6 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.system,
         home: Scaffold(
             appBar: AppBar(title: const Text("Counter App")),
-            body: const CounterScreen()));
+            body: const TipCalculatorScreen()));
   }
 }
