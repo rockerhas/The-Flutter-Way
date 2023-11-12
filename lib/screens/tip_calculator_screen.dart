@@ -19,38 +19,43 @@ class _TipCalculatorScreenState extends State<TipCalculatorScreen> {
   }
 
   Widget _buildTipCalculateScreen(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text("Enter bill amount:"),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextField(
-                keyboardType: TextInputType.number,
-                onChanged: (value) => setState(() {
-                      tipTextFieldState = value;
-                      calculateTip();
-                    })),
+    return Material(
+      child: Scaffold(
+        appBar: AppBar(title: const Text("Tip Calculator")),
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text("Enter bill amount:"),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: TextField(
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) => setState(() {
+                          tipTextFieldState = value;
+                          calculateTip();
+                        })),
+              ),
+              const SizedBox(height: 10),
+              const Text("Select tip percentage"),
+              const SizedBox(height: 10),
+              Slider(
+                  value: sliderValue,
+                  label: sliderValue.round().toString(),
+                  divisions: 11,
+                  min: 0.0,
+                  max: 30.0,
+                  onChanged: (value) => setState(() {
+                        sliderValue = value;
+                        calculateTip();
+                      })),
+              const SizedBox(height: 10),
+              Text("Tip PKR: ${tip.toStringAsFixed(2)}"),
+              Text("Total PKR: ${total.toStringAsFixed(2)}")
+            ],
           ),
-          const SizedBox(height: 10),
-          const Text("Select tip percentage"),
-          const SizedBox(height: 10),
-          Slider(
-              value: sliderValue,
-              label: sliderValue.round().toString(),
-              divisions: 11,
-              min: 0.0,
-              max: 30.0,
-              onChanged: (value) => setState(() {
-                    sliderValue = value;
-                    calculateTip();
-                  })),
-          const SizedBox(height: 10),
-          Text("Tip PKR: ${tip.toStringAsFixed(2)}"),
-          Text("Total PKR: ${total.toStringAsFixed(2)}")
-        ],
+        ),
       ),
     );
   }

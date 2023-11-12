@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app/counter_app.dart';
+import 'app/MyApp.dart';
 
 void main() {
   runApp(const MyApp());
